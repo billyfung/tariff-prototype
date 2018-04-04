@@ -2,10 +2,27 @@ from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://billy@localhost/testdb'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+from config import DefaultConfig
 
+
+def configure_app(app, config=None):
+    if config:
+        app.config.from_object(config)
+    else:
+        app.config.from_object(DefaultConfig)
+
+
+def create_app(config=None, app_name=None):
+    if app_name is None:
+        app_name = DefaultConfig.PROJECT
+
+    app = Flask(__name__, instance_relative_config=True)
+    configure_app(app, config)
+
+    return app
+
+
+app = create_app()
 db = SQLAlchemy(app)
 ma = Marshmallow(app)
 
