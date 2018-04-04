@@ -10,7 +10,6 @@ class BaseConfig:
     DEBUG = False
     TESTING = False
 
-
     # http://flask.pocoo.org/docs/quickstart/#sessions
     SECRET_KEY = 'secret key'
 
