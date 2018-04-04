@@ -9,6 +9,9 @@ name = "pypi"
 
 flask-sqlalchemy = "*"
 flask = "*"
+flask-marshmallow = "*"
+"psycopg2" = "*"
+marshmallow-sqlalchemy = "*"
 
 
 [dev-packages]
