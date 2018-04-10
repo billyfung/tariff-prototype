@@ -39,6 +39,10 @@ class Tariff(db.Model):
         self.description = description
         self.tariff_metadata = tariff_metadata
 
+    def apply(self, tariff_metadata):
+        # do stuff to apply the tariff and 
+        # return line item
+
 
 @app.route("/tariff", methods=["POST"])
 def add_tariff():
